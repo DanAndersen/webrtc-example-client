@@ -26,16 +26,7 @@ app.get('/', function (req, res) {
   });
 });
 
-var webServer = https.createServer(
-  {
-    key : fs.readFileSync("certs/privkey1.pem"),
-    cert : fs.readFileSync("certs/fullchain1.pem"),
-  }, app).listen(app.get('port'), function () {
-  console.log('Web server listening on port ' + app.get('port'));
-});
 
-/*
 app.listen(app.get('port'), function () {
   console.log('Web server listening on port ' + app.get('port'));
 });
-*/
