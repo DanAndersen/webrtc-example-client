@@ -7,10 +7,9 @@ var fs      = require("fs");
 var express = require('express'),
   path = require('path'),
   app = express(),
-  serverPort = parseInt(sy.config.port)
-  clientPort = serverPort - 1;
+  port = parseInt(process.env.PORT);
 
-app.set('port', clientPort);
+app.set('port', port);
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/');
 app.use(express.static(__dirname + '/assets'));
@@ -19,7 +18,6 @@ app.use(express.static(__dirname + '/assets'));
 
 app.get('/', function (req, res) {
   res.render('index', {
-    port: serverPort,
     peer: {
       user: 'demo',
       name: 'Demo User',
