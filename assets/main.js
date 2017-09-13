@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var expectedVideoReceiverPeerName = "star-mentor";
+
     var client, player, remotePeer, initialized = false;
 
     //
@@ -53,7 +55,7 @@ $(document).ready(function() {
     client.on('addPeer', function(peer) {
         console.log('Adding peer:', peer);
 
-        if (peer.user == 'videorecorder' &&
+        if (peer.user == expectedVideoReceiverPeerName &&
             !initialized) {
             initialized = true;
             remotePeer = peer; //m.from;

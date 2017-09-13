@@ -19,8 +19,8 @@ app.use(express.static(__dirname + '/assets'));
 app.get('/', function (req, res) {
   res.render('index', {
     peer: {
-      user: 'demo',
-      name: 'Demo User',
+      user: 'star-trainee',
+      name: 'STAR Trainee',
       group: 'public'
     }
   });
