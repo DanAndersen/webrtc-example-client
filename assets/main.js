@@ -65,8 +65,10 @@ $(document).ready(function() {
 
     client.on('removePeer', function(peer) {
         console.log('Removing peer:', peer);
+        Symple.log('main: removePeer', peer);
 
         if (peer.user == expectedVideoReceiverPeerName && initialized) {
+            Symple.log('main: resetting');
             initialized = false;
             remotePeer = null;
             player.engine.destroy();
