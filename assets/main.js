@@ -72,6 +72,7 @@ $(document).ready(function() {
             initialized = false;
             remotePeer = null;
             player.engine.destroy();
+            player.engine = null;
         }
     });
 
