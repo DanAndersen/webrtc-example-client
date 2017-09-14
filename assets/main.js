@@ -65,6 +65,12 @@ $(document).ready(function() {
 
     client.on('removePeer', function(peer) {
         console.log('Removing peer:', peer);
+
+        if (peer.user == expectedVideoReceiverPeerName && initialized) {
+            initialized = false;
+            remotePeer = null;
+            player.destroy();
+        }
     });
 
     client.on('message', function(m) {
