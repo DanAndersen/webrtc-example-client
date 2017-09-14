@@ -69,7 +69,7 @@ $(document).ready(function() {
         if (peer.user == expectedVideoReceiverPeerName && initialized) {
             initialized = false;
             remotePeer = null;
-            player.stop();
+            player.engine.destroy();
         }
     });
 
