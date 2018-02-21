@@ -40,6 +40,11 @@
             ]
         }
 
+        USER_MEDIA_CONSTRAINTS = { 
+            audio: false, 
+            video: true
+        }
+
         // Intercept Symple log messages
         Symple.log = function () {
             var args = Array.prototype.slice.call(arguments);

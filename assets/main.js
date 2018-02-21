@@ -11,6 +11,10 @@ $(document).ready(function() {
         engine: 'WebRTC',
         initiator: true,
         rtcConfig: WEBRTC_CONFIG,
+        userMediaConstraints: USER_MEDIA_CONSTRAINTS || {
+            audio: false,
+            video: true
+        },
         iceMediaConstraints: {
             'mandatory': {
                 'OfferToReceiveAudio': false,
