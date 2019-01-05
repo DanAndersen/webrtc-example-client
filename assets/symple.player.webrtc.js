@@ -89,7 +89,7 @@ Symple.Player.Engine.WebRTC = Symple.Player.Engine.extend({
         // If there is an active stream then play it now.
         if (this.activeStream) {
             //this.video.src = URL.createObjectURL(this.activeStream);
-            self.video.srcObject = activeStream;
+            this.video.srcObject = activeStream;
             this.video.play();
             this.setState('playing');
         }
