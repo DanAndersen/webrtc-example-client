@@ -88,7 +88,8 @@ Symple.Player.Engine.WebRTC = Symple.Player.Engine.extend({
 
         // If there is an active stream then play it now.
         if (this.activeStream) {
-            this.video.src = URL.createObjectURL(this.activeStream);
+            //this.video.src = URL.createObjectURL(this.activeStream);
+            self.video.srcObject = activeStream;
             this.video.play();
             this.setState('playing');
         }
@@ -107,7 +108,8 @@ Symple.Player.Engine.WebRTC = Symple.Player.Engine.extend({
                     function (localStream) { // success
 
                         // Play the local video stream and create the SDP offer.
-                        self.video.src = URL.createObjectURL(localStream);
+                        //self.video.src = URL.createObjectURL(localStream);
+                        self.video.srcObject = localStream;
                         self.pc.addStream(localStream);
                         self.pc.createOffer(
                             function(desc) { // success
@@ -237,13 +239,14 @@ Symple.Player.Engine.WebRTC = Symple.Player.Engine.extend({
             }
         };
         this.pc.onaddstream = function(event) {
-            Symple.log('symple:webrtc: remote stream added', URL.createObjectURL(event.stream));
+            Symple.log('symple:webrtc: remote stream added');
 
             // Set the state to playing once candidates have completed gathering.
             // This is the best we can do until ICE onstatechange is implemented.
             self.setState('playing');
 
-            self.video.src = URL.createObjectURL(event.stream);
+            //self.video.src = URL.createObjectURL(event.stream);
+            self.video.srcObject = event.stream;
             self.video.play();
 
             // Store the active stream
