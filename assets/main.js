@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    var expectedVideoReceiverPeerName = "star-mentor";
-
     var client, player, remotePeer, initialized = false;
 
     //
@@ -59,7 +57,7 @@ $(document).ready(function() {
     client.on('addPeer', function(peer) {
         console.log('Adding peer:', peer);
 
-        if (peer.user == expectedVideoReceiverPeerName &&
+        if (peer.user == peer.autoconnectto &&
             !initialized) {
             initialized = true;
             remotePeer = peer; //m.from;
@@ -71,7 +69,7 @@ $(document).ready(function() {
         console.log('Removing peer:', peer);
         Symple.log('main: removePeer', peer);
 
-        if (peer.user == expectedVideoReceiverPeerName && initialized) {
+        if (peer.user == peer.autoconnectto && initialized) {
             Symple.log('main: resetting');
             initialized = false;
             remotePeer = null;

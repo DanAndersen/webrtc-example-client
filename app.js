@@ -21,13 +21,31 @@ app.get('/', function (req, res) {
   var user = req.query.user || 'star-trainee';
   var name = req.query.name || 'STAR Trainee';
   var group = req.query.group || 'public';
+  var autoconnectto = req.query.autoconnectto || 'star-mentor';
+
+  var videoenabled = req.query.video || 'true';
+  if (videoenabled === 'false') {
+    videoenabled = false;
+  } else {
+    videoenabled = true;
+  }
+
+  var audioenabled = req.query.audio || 'false';
+  if (audioenabled === 'false') {
+    audioenabled = false;
+  } else {
+    audioenabled = true;
+  }
 
   res.render('index', {
     peer: {
       user: user,
       name: name,
-      group: group
-    }
+      group: group,
+      autoconnectto: autoconnectto,
+    },
+    videoenabled: videoenabled,
+    audioenabled: audioenabled
   });
 });
 
