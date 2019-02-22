@@ -60,6 +60,11 @@ Symple.Player.Engine.WebRTC = Symple.Player.Engine.extend({
             this.video = document.createElement('video');
             this.video.autoplay = true;
             this.video.muted = true; // adding because we only care about the video and Chrome requires muted on autoplaying videos
+
+            if (!this.video.hasAttribute("controls")) {
+              this.video.setAttribute("controls","controls");
+            }
+
             this.player.screen.prepend(this.video);
         }
     },
